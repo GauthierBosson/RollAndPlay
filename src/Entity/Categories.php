@@ -14,8 +14,12 @@ class Categories
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id,
-            $categorielibelle;
+    private $id;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $categorielibelle;
 
     /**
      * @return mixed

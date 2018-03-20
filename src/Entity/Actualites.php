@@ -14,13 +14,63 @@ class Actualites
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id,
-            $titre,
-            $chapo,
-            $contenu,
-            $auteur,
-            $date,
-            $featuredimage;
+    private $id;
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $titre;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $chapo;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $contenu;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Users", mappedBy="actualites")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user): void
+    {
+        $this->user = $user;
+    }
+
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $featuredimage;
 
     /**
      * @return mixed
@@ -70,21 +120,7 @@ class Actualites
         $this->contenu = $contenu;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getAuteur()
-    {
-        return $this->auteur;
-    }
 
-    /**
-     * @param mixed $auteur
-     */
-    public function setAuteur($auteur): void
-    {
-        $this->auteur = $auteur;
-    }
 
     /**
      * @return mixed

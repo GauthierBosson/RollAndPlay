@@ -9,6 +9,7 @@
 namespace App\Controller\RollAndPlay;
 
 
+use App\Entity\Actualites;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,13 @@ class IndexController extends Controller
      * @return Response
      */
     public function index() {
-        return $this->render('base.html.twig');
+         $repositories =  $this->getDoctrine()
+                                ->getRepository(Actualites::class);
+
+        $actualites = $repositories->findAll();
+        return $this->render('index.html.twig',[
+            'actualites' => $actualites
+        ]);
     }
 
     /**
