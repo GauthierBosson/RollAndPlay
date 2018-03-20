@@ -9,16 +9,25 @@
 namespace App\Controller\RollAndPlay;
 
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexController
+class IndexController extends Controller
 {
     /**
      * @Route("/")
      * @return Response
      */
     public function index() {
-        return new Response("<html><body><h1>PAGE D'ACCUEIL</h1></body></html>");
+        return $this->render('base.html.twig');
+    }
+
+    /**
+     * @Route("/inscription",name="index_inscription")
+     * @return Response
+     */
+    public function inscription(){
+        return $this->render('Inscription/inscription.html.twig');
     }
 }
