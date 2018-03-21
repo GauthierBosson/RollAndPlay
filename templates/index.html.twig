@@ -9,7 +9,10 @@
 {% block body %}
     <a href="/inscription">inscription</a>
     <a href="/connexion">connexion</a>
-    <a href="/deconnexion">deconnexion</a>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="/deconnexion">deconnexion</a>
+
+    {% endif %}
     {{ dump(app.user) }}
     {% for actualite in actualites %}
         {{ actualite.titre }}
