@@ -41,6 +41,27 @@ class Users
     /**
      * @return mixed
      */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * @param mixed $roles
+     */
+    public function setRoles($roles): void
+    {
+        $this->roles[] = $roles;
+    }
+
+    /**
+     * @ORM\Column(name="roles",type="array")
+     */
+    private $roles;
+
+    /**
+     * @return mixed
+     */
     public function getActualites()
     {
         return $this->actualites;
@@ -103,27 +124,7 @@ class Users
         $this->email = $email;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRoles()
-    {
-        return $this->roles;
-    }
 
-    /**
-     * @param mixed $roles
-     */
-    public function setRoles($roles): void
-    {
-        $this->roles = $roles;
-    }
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Roles")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $roles;
 
     public function getId()
     {

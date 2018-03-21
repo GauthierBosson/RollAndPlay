@@ -25,6 +25,7 @@ class SecurityController extends Controller
      */
     public function inscription(Request $request) {
         $inscription = new Users();
+        $inscription->setRoles('ROLE_MJ');
         $form = $this->createFormBuilder($inscription)
                     ->add('login',TextType::class,[
                         'required' => true,
@@ -47,11 +48,10 @@ class SecurityController extends Controller
                             'placeholder' => 'Votre e-mail'
                         ]
                     ])
-                    ->add('submit',SubmitType::class , [
+                    ->add('envoi',SubmitType::class , [
 
                         'attr'=> [
-                            'class' => 'envoi',
-                            'value' => 'Inscription'
+                            'class' => 'envoi'
                         ]
                     ])
                     ->getForm();

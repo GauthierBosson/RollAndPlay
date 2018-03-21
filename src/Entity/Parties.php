@@ -103,26 +103,7 @@ class Parties
         $this->user = $user;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getRoles()
-    {
-        return $this->roles;
-    }
 
-    /**
-     * @param mixed $roles
-     */
-    public function setRoles($roles): void
-    {
-        $this->roles = $roles;
-    }
-
-    /**
-     *@ORM\OneToOne(targetEntity="App\Entity\Roles")
-     */
-    private $roles;
 
     public function getId()
     {
