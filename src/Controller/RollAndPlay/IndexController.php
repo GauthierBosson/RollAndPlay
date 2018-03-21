@@ -30,7 +30,7 @@ class IndexController extends Controller
         ]);
     }
 
-    /**
+   /* /**
      * @Route("/inscription",name="index_inscription")
      * @return Response
      */
