@@ -19,6 +19,7 @@ class ActualitesRepository extends ServiceEntityRepository
         parent::__construct($registry, Actualites::class);
     }
 
+
 //    /**
 //     * @return Actualites[] Returns an array of Actualites objects
 //     */

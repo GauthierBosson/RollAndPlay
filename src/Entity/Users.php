@@ -121,7 +121,7 @@ class Users
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Roles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $roles;
 
