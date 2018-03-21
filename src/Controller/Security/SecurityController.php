@@ -16,6 +16,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends Controller
 {
@@ -23,7 +24,7 @@ class SecurityController extends Controller
      * Inscription d'un utilisateur
      * @Route("/inscription", name="security_inscription", methods={"GET", "POST"})
      */
-    public function inscription(Request $request) {
+    public function inscription(Request $request , UserPasswordEncoderInterface $passwordEncoder) {
         $inscription = new Users();
         $inscription->setRoles('ROLE_MJ');
         $form = $this->createFormBuilder($inscription)
@@ -55,8 +56,13 @@ class SecurityController extends Controller
                         ]
                     ])
                     ->getForm();
+
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()):
+
+            $password = $passwordEncoder->encodePassword($inscription ,  $inscription-> getPassword());
+            $inscription->setPassword($password);
             $inscription = $form->getData();
         $em = $this->getDoctrine()->getManager();
         $em->persist($inscription);
