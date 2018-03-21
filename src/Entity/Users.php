@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsersRepository")
- *
+ * @UniqueEntity(fields={"email"}, errorPath="email", message="Ce compte existe déjà !")
  */
 class Users implements UserInterface
 {
