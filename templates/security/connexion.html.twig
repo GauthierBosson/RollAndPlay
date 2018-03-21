@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+{% block body %}
+    <h1>Connexion</h1>
+    <form action="{{ path('security_connexion') }}" method="post">
+        <input name="_username"
+               value="{{ last_email }}"
+               class="form-control" required type="email"
+               placeholder="Saisissez votre Email">
+        <input name="_password"
+               class="form-control" required type="password"
+               placeholder="*******">
+        <input type="hidden" name="_target_path" value="/" />
+        <button type="submit">login</button>
+    </form>
+    {% if error %}
+        <div class="alert alert-danger">
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            {{ error.messageKey|trans(error.messageData, 'security')| replace({"Invalid credentials." : "Identifiant et/ou mot de passe incorrect."}) }}
+        </div>
+    {% endif %}
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

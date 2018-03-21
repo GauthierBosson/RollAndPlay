@@ -7,7 +7,10 @@
 </head>
 <body>
 {% block body %}
-    <a href="/inscription">DEDE</a>
+    <a href="/inscription">inscription</a>
+    <a href="/connexion">connexion</a>
+    <a href="/deconnexion">deconnexion</a>
+    {{ dump(app.user) }}
     {% for actualite in actualites %}
         {{ actualite.titre }}
     {% endfor %}
