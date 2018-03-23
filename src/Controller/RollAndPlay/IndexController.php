@@ -30,4 +30,12 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/chat",name="index_chat")
+     * @return Response
+     */
+    public function chat(){
+        return $this->render('Partie/partie.html.twig');
+    }
+
 }
