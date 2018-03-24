@@ -33,11 +33,21 @@ class IndexController extends Controller
         ]);
     }
 
+
     /**
-     * @Route("/chat",name="index_chat")
+     * @Route("/lobby")
      * @return Response
      */
-    public function chat(Request $request){
+    public function lobby() {
+        return $this->render('Partie/lobby_partie.html.twig');
+    }
+
+    /**
+     * @Route("lobby/partie/{nom}_{id}.html", name="index_partie",
+     *     requirements={"idarticle"="\d+"} )
+     */
+    public function partie(Request $request) {
+
         // recuperer bdd
         $rp = $this->getDoctrine()->getRepository(Chat::class);
         $message = $rp->getMessage()
@@ -62,9 +72,6 @@ class IndexController extends Controller
             $em->flush();
 
         endif;
-
-
-
 
         return $this->render('Partie/partie.html.twig',[
             'form' => $form->createView(),
