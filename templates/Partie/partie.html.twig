@@ -13,6 +13,8 @@
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
         <script src="{{ asset('assets/js/script.js') }}"></script>
+
+
     {% endblock %}
 </head>
 <body>
@@ -32,12 +34,15 @@
     <div class="col-sm-3" style="height: 100vh;">
         <h2>Messagerie : </h2>
         <div id="tchat">
+            {% for msg in message %}
+                <p><strong>{{ msg.pseudo }} : </strong>  {{ msg.message }}</p>
 
+            {% endfor %}
         </div>
         <div id="tchatForm" style="position: fixed;bottom: 0;width: 24%; ">
             <form action="#" method="post">
                 <div style="margin-right: 0;">
-                    <textarea name="message" style="width: 100%;"></textarea>
+                    {{ form(form) }}
                 </div>
                 <div style="position: absolute;top: 12px;right: 25px;">
                     <input type="submit" value="Envoyer">

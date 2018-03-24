@@ -18,6 +18,19 @@ class ChatRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Chat::class);
     }
+    public function getMessage(){
+
+
+        return $this->createQueryBuilder('a')
+                    ->orderBy('a.date','DESC')
+            ->setMaxResults(15)
+            //->where('a.id > '. $lastid  )
+                    ->getQuery()
+                    ->getResult();
+
+
+    }
+
 
 //    /**
 //     * @return Chat[] Returns an array of Chat objects
