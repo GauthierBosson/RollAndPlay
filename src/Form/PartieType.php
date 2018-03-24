@@ -2,47 +2,49 @@
 /**
  * Created by PhpStorm.
  * User: gauthierbosson
- * Date: 21/03/2018
- * Time: 09:36
+ * Date: 24/03/2018
+ * Time: 13:28
  */
 
 namespace App\Form;
 
 
-use App\Entity\Users;
+use App\Entity\Parties;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UserType extends AbstractType
+class PartieType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
 
-            ->add('login',TextType::class,[
+            ->add('nom',TextType::class,[
                 'required' => true,
-                'label'    => 'Votre pseudo ',
+                'label'    => 'Votre titre ',
                 'attr'     => [
-                    'placeholder' => 'Votre Pseudo'
+                    'placeholder' => 'Votre titre'
                 ]
             ])
-            ->add('password', PasswordType::class, [
-                'required' => true,
-                'label'    => 'Votre mot de passe :',
-                'attr'     => [
-                    'placeholder' => 'Votre mot de passe'
+            /*->add('categorie', EntityType::class, [
+                'class' => Categories::class,
+                'choice_label' => 'categorielibelle',
+                'expanded'  => false,
+                'multiple'  => false,
+                'label'     => false,
+                'attr'          => [
+                    'class'         =>  'form-control'
                 ]
-            ])
-            ->add('email' , EmailType::class,[
+            ])*/
+            ->add('description' , TextareaType::class,[
                 'required' => true,
-                'label'    => 'Votre e-mail :',
+                'label'    => 'Votre description :',
                 'attr'     => [
-                    'placeholder' => 'Votre e-mail'
+                    'placeholder' => 'Votre description'
                 ]
             ])
             ->add('envoi',SubmitType::class, [
@@ -56,7 +58,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Users::class,
+            'data_class' => Parties::class,
         ));
     }
 }

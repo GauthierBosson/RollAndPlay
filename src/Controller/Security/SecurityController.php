@@ -9,6 +9,7 @@
 namespace App\Controller\Security;
 
 use App\Entity\Users;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -28,35 +29,7 @@ class SecurityController extends Controller
     public function inscription(Request $request , UserPasswordEncoderInterface $passwordEncoder) {
         $inscription = new Users();
         $inscription->setRoles('ROLE_MJ');
-        $form = $this->createFormBuilder($inscription)
-                    ->add('login',TextType::class,[
-                        'required' => true,
-                        'label'    => 'Votre pseudo ',
-                        'attr'     => [
-                            'placeholder' => 'Votre Pseudo'
-                        ]
-                    ])
-                    ->add('password', PasswordType::class , [
-                        'required' => true,
-                        'label'    => 'Votre mot de passe :',
-                        'attr'     => [
-                            'placeholder' => 'Votre mot de passe'
-                        ]
-                    ])
-                    ->add('email' , EmailType::class ,[
-                        'required' => true,
-                        'label'    => 'Votre e-mail :',
-                        'attr'     => [
-                            'placeholder' => 'Votre e-mail'
-                        ]
-                    ])
-                    ->add('envoi',SubmitType::class , [
-
-                        'attr'=> [
-                            'class' => 'envoi'
-                        ]
-                    ])
-                    ->getForm();
+        $form = $this->createForm(UserType::class, $inscription);
 
 
         $form->handleRequest($request);

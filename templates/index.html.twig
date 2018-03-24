@@ -11,6 +11,7 @@
     <a href="/connexion">connexion</a>
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <a href="/deconnexion">deconnexion</a>
+        <a href="/lobby">Mon lobby</a>
 
     {% endif %}
     {{ dump(app.user) }}

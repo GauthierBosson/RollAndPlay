@@ -32,7 +32,7 @@ class Categories
     /**
      * @param mixed $categorielibelle
      */
-    public function setCategorielibelle($categorielibelle): void
+    public function setCategorielibelle($categorielibelle)
     {
         $this->categorielibelle = $categorielibelle;
     }
