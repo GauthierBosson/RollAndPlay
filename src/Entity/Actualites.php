@@ -40,7 +40,7 @@ class Actualites
     private $contenu;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Users", mappedBy="actualites")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Users",inversedBy="actualites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

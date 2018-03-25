@@ -35,7 +35,7 @@ class Users implements UserInterface
     private $email;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Actualites",inversedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Actualites", mappedBy="user")
      *
      */
     private $actualites;

@@ -17,7 +17,8 @@ class Categories
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\OneToMany(targetEntity="App\Entity\Parties",mappedBy="categorie")
+     *@ORM\Column(type="string")
      */
     private $categorielibelle;
 

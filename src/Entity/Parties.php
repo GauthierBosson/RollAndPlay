@@ -22,8 +22,8 @@ class Parties
     private  $nom  ;
 
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\ManyToOne(targetEntity="App\Entity\Categories")
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Categories")
      * @ORM\JoinColumn(nullable=false)
      */
     private $categorie ;
