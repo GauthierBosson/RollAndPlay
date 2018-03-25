@@ -8,11 +8,12 @@
 
 namespace App\Controller\RollAndPlay;
 
-use App\Entity\Parties;
+use App\Entity\FichePersonnages;
 use App\Form\ChatType;
 use App\Entity\Actualites;
 use App\Entity\Chat;
 use App\Entity\Users;
+use App\Form\FichePersoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -36,29 +37,26 @@ class IndexController extends Controller
 
 
     /**
-     * @Route("/lobby", name="index_lobby")
+     * @Route("/lobby")
      * @return Response
      */
     public function lobby() {
-        $repository = $this->getDoctrine()
-                            ->getRepository(Parties::class);
-        $parties = $repository->findAll();
-        return $this->render('Partie/lobby_partie.html.twig', [
-            'parties' => $parties
-        ]);
+        return $this->render('Partie/lobby_partie.html.twig');
     }
 
     /**
      * @Route("lobby/partie/{nom}_{id}.html", name="index_partie",
      *     requirements={"idarticle"="\d+"} )
      */
-    public function partie(Request $request) {
+    public function partie(Request $request , Request $request2) {
 
         // recuperer bdd
         $rp = $this->getDoctrine()->getRepository(Chat::class);
         $message = $rp->getMessage()
         ;
+        $rpPerso = $this->getDoctrine()->getRepository(FichePersonnages::class);
 
+        $fiche = $rpPerso->findAll();
 
         // nouveau msg
         $nvmessages = new Chat();
@@ -66,9 +64,13 @@ class IndexController extends Controller
         $nvmessages->setPseudo('Theodac');
         $nvmessages->setDate(time());
 
-        $form = $this->createForm(ChatType::class , $nvmessages);
 
+
+        $form = $this->createForm(ChatType::class , $nvmessages);
+        $ficheperso = new FichePersonnages();
+        $formperso = $this->createForm(FichePersoType::class , $ficheperso);
         $form->handleRequest($request);
+        $formperso->handleRequest($request2);
 
         if ($form->isSubmitted() && $form->isValid()) :
 
@@ -78,10 +80,20 @@ class IndexController extends Controller
             $em->flush();
 
         endif;
+        if ($formperso->isSubmitted() && $formperso->isValid()) :
+
+            $ficheperso = $formperso->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($ficheperso);
+            $em->flush();
+
+        endif;
 
         return $this->render('Partie/partie.html.twig',[
             'form' => $form->createView(),
             'message' => $message ,
+            'formperso' => $formperso->createView(),
+            'fiche' => $fiche
 
         ]);
     }
