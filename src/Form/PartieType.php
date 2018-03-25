@@ -9,7 +9,9 @@
 namespace App\Form;
 
 
+use App\Entity\Categories;
 use App\Entity\Parties;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -30,7 +32,7 @@ class PartieType extends AbstractType
                     'placeholder' => 'Votre titre'
                 ]
             ])
-            /*->add('categorie', EntityType::class, [
+            ->add('categorie', EntityType::class, [
                 'class' => Categories::class,
                 'choice_label' => 'categorielibelle',
                 'expanded'  => false,
@@ -39,7 +41,7 @@ class PartieType extends AbstractType
                 'attr'          => [
                     'class'         =>  'form-control'
                 ]
-            ])*/
+            ])
             ->add('description' , TextareaType::class,[
                 'required' => true,
                 'label'    => 'Votre description :',

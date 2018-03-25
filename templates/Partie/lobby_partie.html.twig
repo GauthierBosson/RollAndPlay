@@ -9,6 +9,13 @@
 {% block body %}
     <h1>lobby</h1>
     <a href="/creer-une-partie">Créer une partie</a>
+    {% for partie in parties  %}
+        <div>
+            {{ partie.nom }}
+            {{ partie.description }}
+            <a href="{{ path('delete_partie', {'id': partie.id }) }}">Delete</a>
+        </div>
+    {% endfor %}
 {% endblock %}
 {% block javascripts %}{% endblock %}
 </body>

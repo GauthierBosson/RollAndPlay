@@ -46,6 +46,19 @@ class PartieController extends Controller
         ]);
     }
 
+    /**
+     * @param $id
+     * @Route("/lobby/delete/{id}", name="delete_partie")
+     */
+    public function deletePartie($id) {
+        $em = $this->getDoctrine()->getManager();
+        $partie = $em->getRepository(Parties::class)->find($id);
+        $em->remove($partie);
+        $em->flush();
+
+        return $this->redirectToRoute('index_lobby');
+    }
+
     /*public function verifyRight() {
         $data = $this->getUser();
         $password = $this->getUser()->getId();
