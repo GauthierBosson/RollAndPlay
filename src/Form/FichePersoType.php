@@ -64,10 +64,10 @@ class FichePersoType extends AbstractType
                     'class' => 'inventaire'
                 ]
             ])
-            ->add('envoi' , SubmitType::class , [
+            ->add('Lancer vous' , SubmitType::class , [
 
                 'attr' => [
-                    'class' => 'envoi'
+                    'class' => 'envoi  btn btn-primary btn-block'
                     
                 ]
             ]);

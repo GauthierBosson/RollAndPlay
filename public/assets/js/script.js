@@ -1,3 +1,51 @@
+
+$(function () {
+    $('.connection').click(function () {
+        $('.connectinterface').remove();
+        $('.vide').append(`<div class="connectinterface">
+    <span class="croix" onclick="fermer2()"><i class="fa fa-times-circle"></i></span><br>
+    <form id="contact-form" method="post" action="" class="contact-form form">
+                  <div class="controls">
+                    <div class="row">
+                    <div class="col-sm-2"></div>
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label for="name">Votre Pseudo *</label>
+                          <input type="text" name="pseudo" id="pseudo" placeholder="Entrez votre Pseudo" required="required" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-sm-2"></div>
+                      </div>
+                      <div class="row">
+                      <div class="col-sm-2"></div>
+                      <div class="col-sm-8">
+                        <div class="form-group">
+                          <label for="surname">Votre Mot de Passe *</label>
+                          <input type="text" name="mdp" id="mdp" placeholder="Entrez votre Mot de passe" required="required" class="form-control">
+                        </div>
+                      </div>
+                      <div class="col-sm-2"></div>
+                    </div>
+                    <div class="row">
+                    <div class="col-sm-2"></div>
+                     <div class="col-sm-8 text-center">
+                      <input type="submit" value="Envoyez message" class="btn btn-primary btn-block">
+                    </div>
+                    <div class="col-sm-2"></div>
+                    </div>
+                  </div>
+                </form>
+              </div></div>`)
+        $('.connectinterface').hide().fadeIn(400)
+    });
+});
+
+
+
+function fermer2() {
+    $('.connectinterface').fadeOut(400);
+}
+
 function demorand100() {
     var a=0;
     a=Math.random();
@@ -64,19 +112,19 @@ $(function () {
         $('textarea').css('box-shadow','0 0 10px red')
     });
     $('.des').click(function () {
-        $('.formdes').remove();
-        $('.plateau').append(`<div class="formdes">
-    <form name="form1" action="">
+        $('#draggable').remove();
+        $('.plateau').append(`<div id="draggable" class="ui-widget-content"><span onclick="fermer()" class="croix"><i class="fa fa-times-circle"></i></span><br>
+<form name="form1" action="">
         <input type="number" class="choicede" style="width: 35px;">
-        <input type=button name=Bouton class="choicedee" value="Lancer de dés" onclick="rolldice1()"  style="width: 150px;padding: 5px;" />
+        <input type=button name=Bouton class="choicedee btn btn-primary btn-block" value="Lancer de dés perso" onclick="rolldice1()"  style="width: 150px;padding: 5px;" />
         <br>
-        <input type=button name=Bouton class="100de" value="Lancer de dés 100" onclick="rolldice2()" style="width: 150px;padding: 5px;"/>
+        <input type=button name=Bouton class="100de btn btn-primary btn-block" value="Lancer de dés 100" onclick="rolldice2()" style="width: 150px;padding: 5px;"/>
         <br>
-        <input type=button name=Bouton class="20de" value="Lancer de dés 20" onclick="rolldice3()" style="width: 150px;padding: 5px;" />
+        <input type=button name=Bouton class="20de btn btn-primary btn-block" value="Lancer de dés 20" onclick="rolldice3()" style="width: 150px;padding: 5px;" />
         <br>
-        <input type=button name=Bouton class="12de" value="Lancer de dés 12" onclick="rolldice4()" style="width: 150px;padding: 5px;" />
+        <input type=button name=Bouton class="12de btn btn-primary btn-block" value="Lancer de dés 12" onclick="rolldice4()" style="width: 150px;padding: 5px;" />
         <br>
-        <input type=button name=Bouton class="6de" value="Lancer de dés 6" onclick="rolldice5()" style="width: 150px;padding: 5px;" />
+        <input type=button name=Bouton class="6de btn btn-primary btn-block" value="Lancer de dés 6" onclick="rolldice5()" style="width: 150px;padding: 5px;" />
  
     <div class="animation1 col-sm4"><input name="dechoice" type="text" style="width: 100%;height: 100%;text-align: center;" /></div>
     <div class="animation2 col-sm4"><input name="de100" type="text"  style="width: 100%;height: 100%;text-align: center;" /></div>
@@ -86,6 +134,7 @@ $(function () {
   </form>   
   </div> 
 `);
+        $('#draggable').hide().fadeIn(400)
         $('.animation1').hide();
         $('.animation2').hide();
         $('.animation3').hide();
@@ -93,10 +142,16 @@ $(function () {
         $('.animation5').hide();
 
 
+        $( function() {
+            $( "#draggable" ).draggable();
+        } );
+
     });
+    $('.Perso').hide();
+    $('.Resume').hide();
+    $('.ongletchat').css('background','white');
+    $('.Persocreer').hide();
 });
-$('.Perso').hide();
-$('.Resume').hide();
 function ongletchat() {
     $('.Perso').hide();
     $('.Resume').hide();
@@ -123,6 +178,35 @@ function ongletresume() {
     $('.ongletchat').css('background','#ddd');
     $('.ongletpageresume').css('background','white')
 }
+
+
+function fermer() {
+    $('#draggable').fadeOut(400);
+}
+
+function fermer2() {
+    $('.Persocreer').fadeOut(400);
+}
+
+$(function () {
+
+    $('.creerperso').click(function () {
+        $('.Persocreer').fadeIn(400);
+    });
+
+    if ( !$('.nom').value ){
+
+
+    }else{
+        $('.envoi').click(function () {
+            $('.Persocreer').fadeOut(400);
+        })
+    }
+
+
+
+
+});
 
 
 
