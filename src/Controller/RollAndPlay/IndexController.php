@@ -57,9 +57,17 @@ class IndexController extends Controller
 
     /**
      * @Route("lobby/partie/{nom}_{id}.html", name="index_partie",
-     *     requirements={"idarticle"="\d+"} )
+     *     requirements={"id"="\d+"} )
      */
-    public function partie(Request $request , Request $request2) {
+    public function partie($nom, $id, Request $request , Request $request2) {
+
+        $partie = $this->getDoctrine()
+            ->getRepository(Parties::class)
+            ->findBy(array( 'nom' => $nom, 'id' => $id ));
+
+        if (!$partie) :
+            return $this->redirectToRoute('index',[],Response::HTTP_MOVED_PERMANENTLY);
+        endif;
 
         // recuperer bdd
         $rp = $this->getDoctrine()->getRepository(Chat::class);
