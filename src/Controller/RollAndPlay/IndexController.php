@@ -8,6 +8,7 @@
 
 namespace App\Controller\RollAndPlay;
 
+use App\Controller\Helper;
 use App\Entity\FichePersonnages;
 use App\Entity\Parties;
 use App\Form\ChatType;
@@ -22,6 +23,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IndexController extends Controller
 {
+    use Helper;
     /**
      * @Route("/")
      * @return Response
@@ -45,7 +47,9 @@ class IndexController extends Controller
         $repository = $this->getDoctrine()
             ->getRepository(Parties::class);
         $parties = $repository->findAll();
+        $partie = new Parties();
         return $this->render('Partie/lobby_partie.html.twig', [
+            'nom' => $this->slugify($partie->getNom()),
             'parties' => $parties
         ]);
     }
