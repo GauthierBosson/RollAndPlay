@@ -145,6 +145,9 @@ $(function () {
         $( function() {
             $( "#draggable" ).draggable();
         } );
+        $( function() {
+            $( ".Persocreer" ).draggable();
+        } );
 
     });
     $('.Perso').hide();
