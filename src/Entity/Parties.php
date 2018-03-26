@@ -23,7 +23,7 @@ class Parties
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="App\Entity\Categories" )
+     * @ORM\ManyToOne(targetEntity="App\Entity\Categories" )
      * @ORM\JoinColumn(nullable=false , unique=false)
      */
     private $categorie ;
