@@ -96,18 +96,32 @@ $(function () {
     });
 });
 $('.Perso').hide();
+$('.Resume').hide();
 function ongletchat() {
     $('.Perso').hide();
+    $('.Resume').hide();
     $('.tchat').show();
-    $('.ongletchat').css('background','white');
-    $('.ongletpageperso').css('background','#ddd')
+    $('.ongletpageperso').css('background','#ddd');
+    $('.ongletpageresume').css('background','#ddd');
+    $('.ongletchat').css('background','white')
 }
 
 function ongletperso() {
     $('.tchat').hide();
+    $('.Resume').hide();
     $('.Perso').show();
-    $('.ongletpageperso').css('background','white');
-    $('.ongletchat').css('background','#ddd')
+    $('.ongletchat').css('background','#ddd');
+    $('.ongletpageresume').css('background','#ddd');
+    $('.ongletpageperso').css('background','white')
+}
+
+function ongletresume() {
+    $('.tchat').hide();
+    $('.Perso').hide();
+    $('.Resume').show();
+    $('.ongletpageperso').css('background','#ddd');
+    $('.ongletchat').css('background','#ddd');
+    $('.ongletpageresume').css('background','white')
 }
 
 
