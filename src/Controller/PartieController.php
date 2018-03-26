@@ -8,7 +8,6 @@
 
 namespace App\Controller;
 
-use Symfony\Component\Security\Http\Session;
 use App\Entity\Parties;
 use App\Form\PartieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -59,10 +58,4 @@ class PartieController extends Controller
         return $this->redirectToRoute('index_lobby');
     }
 
-    /*public function verifyRight() {
-        $data = $this->getUser();
-        $password = $this->getUser()->getId();
-
-        if(openssl_encrypt($data, 'AES-128-ECB', $password) == openssl_decrypt()):
-    }*/
 }

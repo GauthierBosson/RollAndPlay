@@ -13,9 +13,11 @@
         <div>
             {{ partie.nom }}
             {{ partie.description }}
+            <a href="{{ path('index_partie', {'nom': partie.nom, 'id': partie.id}) }}">Accéder à la partie</a>
             <a href="{{ path('delete_partie', {'id': partie.id }) }}">Delete</a>
         </div>
     {% endfor %}
+    <a href="/">accueil</a>
 {% endblock %}
 {% block javascripts %}{% endblock %}
 </body>
