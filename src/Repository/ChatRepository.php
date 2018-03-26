@@ -19,12 +19,7 @@ class ChatRepository extends ServiceEntityRepository
         parent::__construct($registry, Chat::class);
     }
     public function getMessage(){
-      //  $rawsql = "SELECT MAX(id) AS lastid FROM chat";
 
-        //$sql = "SELECT * FROM chat WHERE id > @myLastId";
-
-      //  $stmt = $this->getEntityManager()->getConnection()->prepare($sql);
-    //    $stmt->execute([]);
         return
             $this->createQueryBuilder('a')
                     ->orderBy('a.date','DESC')

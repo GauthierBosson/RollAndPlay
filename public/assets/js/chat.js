@@ -1,4 +1,4 @@
-var url = "tchatAjax.php";
+var url = "IndexController.php";
 var lastid= 0;
 var timer = setInterval(getMessages , 5000);
 $(function () {

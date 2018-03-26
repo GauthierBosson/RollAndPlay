@@ -9,6 +9,7 @@
 namespace App\Controller\RollAndPlay;
 
 use App\Entity\FichePersonnages;
+use App\Entity\Parties;
 use App\Form\ChatType;
 use App\Entity\Actualites;
 use App\Entity\Chat;
@@ -26,8 +27,8 @@ class IndexController extends Controller
      * @return Response
      */
     public function index() {
-         $repositories =  $this->getDoctrine()
-                                ->getRepository(Actualites::class);
+        $repositories =  $this->getDoctrine()
+            ->getRepository(Actualites::class);
 
         $actualites = $repositories->findAll();
         return $this->render('index.html.twig',[
@@ -37,11 +38,16 @@ class IndexController extends Controller
 
 
     /**
-     * @Route("/lobby")
+     * @Route("/lobby", name="index_lobby")
      * @return Response
      */
     public function lobby() {
-        return $this->render('Partie/lobby_partie.html.twig');
+        $repository = $this->getDoctrine()
+            ->getRepository(Parties::class);
+        $parties = $repository->findAll();
+        return $this->render('Partie/lobby_partie.html.twig', [
+            'parties' => $parties
+        ]);
     }
 
     /**

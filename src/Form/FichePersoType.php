@@ -29,9 +29,9 @@ class FichePersoType extends AbstractType
                     'placeholder' => 'Votre nom'
                 ]
             ])
-            ->add('image',FileType::class,[
+            ->add('image',TextType::class,[
                 'required' => false,
-                'label' => 'Image de votre personnage',
+                'label' => 'Lien de votre image ',
                 'attr' => [
                     'class' => 'image'
                 ]
@@ -65,8 +65,10 @@ class FichePersoType extends AbstractType
                 ]
             ])
             ->add('envoi' , SubmitType::class , [
+
                 'attr' => [
                     'class' => 'envoi'
+                    
                 ]
             ]);
 
