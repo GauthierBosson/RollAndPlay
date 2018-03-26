@@ -11,10 +11,10 @@ namespace App\Controller\RollAndPlay;
 use App\Controller\Helper;
 use App\Entity\FichePersonnages;
 use App\Entity\Parties;
+use App\Entity\Users;
 use App\Form\ChatType;
 use App\Entity\Actualites;
 use App\Entity\Chat;
-use App\Entity\Users;
 use App\Form\FichePersoType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -46,7 +46,8 @@ class IndexController extends Controller
     public function lobby() {
         $repository = $this->getDoctrine()
             ->getRepository(Parties::class);
-        $parties = $repository->findAll();
+        $user = $this->getUser();
+        $parties = $repository->findBy(array('user' => $user->getId()));
         $partie = new Parties();
         return $this->render('Partie/lobby_partie.html.twig', [
             'nom' => $this->slugify($partie->getNom()),
