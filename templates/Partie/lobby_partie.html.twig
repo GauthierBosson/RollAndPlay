@@ -11,10 +11,10 @@
     <a href="/creer-une-partie">Créer une partie</a>
     {% for partie in parties  %}
         <div>
-            {{ partie.nom | gamelink }}
+            {{ partie.nom }}
             {{ partie.nom }}
             {{ partie.description }}
-            <a href="{{ path('index_partie', {'nom': partie.nom, 'id': partie.id}) }}">Accéder à la partie</a>
+            <a href="{{ path('index_partie', {'nom': partie.nom | slugify, 'id': partie.id}) }}">Accéder à la partie</a>
             <a href="{{ path('delete_partie', {'id': partie.id }) }}">Delete</a>
         </div>
     {% endfor %}
