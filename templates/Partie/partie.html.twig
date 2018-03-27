@@ -60,7 +60,15 @@
             </div>
             <div class="Resume">
                 <div id="Resume">
-
+                    <div>
+                    {{ form(formresume) }}
+                    </div>
+                    <div>
+                        {% for resumes in resume  %}
+                            {{ resumes.titre }}
+                            {{ resumes.contenu }}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="Perso">

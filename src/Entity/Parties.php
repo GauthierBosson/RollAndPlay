@@ -40,6 +40,11 @@ class Parties
     private $user ;
 
     /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Resume")
+     */
+    private $resume;
+
+    /**
      * @return mixed
      */
     public function getNom()
