@@ -138,4 +138,15 @@ class IndexController extends Controller
         ]);
     }
 
+    /**
+     * @Route("/profil", name="index_profil")
+     * @return Response
+     */
+    public function profil() {
+        $user = $this->getUser();
+        return $this->render('Profil/profil.html.twig', [
+            'user' => $user
+        ]);
+    }
+
 }

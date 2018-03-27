@@ -37,7 +37,7 @@ class PartieController extends Controller
 
             return $this->redirectToRoute('index_partie', [
                 'nom' => $this->slugify($partie->getNom()),
-                'id'               => $partie->getId()
+                'id'               => $partie->getId(),
             ]);
         endif;
         return $this->render('Partie/creer_partie.html.twig', [
