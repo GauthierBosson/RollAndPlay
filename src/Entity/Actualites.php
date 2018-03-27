@@ -63,7 +63,7 @@ class Actualites
 
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="integer")
      */
     private $date;
 
