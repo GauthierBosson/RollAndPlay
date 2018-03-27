@@ -19,6 +19,15 @@ class ResumeRepository extends ServiceEntityRepository
         parent::__construct($registry, Resume::class);
     }
 
+    public function getResume(){
+        return
+        $this->createQueryBuilder('a')
+            ->orderBy('a.date','DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Resume[] Returns an array of Resume objects
 //     */

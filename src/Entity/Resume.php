@@ -22,6 +22,43 @@ class Resume
     private $titre;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $date;
+
+    /**
+     * @return mixed
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * @param mixed $date
+     */
+    public function setDate($date): void
+    {
+        $this->date = $date;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartie()
+    {
+        return $this->partie;
+    }
+
+    /**
+     * @param mixed $partie
+     */
+    public function setPartie($partie): void
+    {
+        $this->partie = $partie;
+    }
+
+    /**
      * @return mixed
      */
     public function getTitre()

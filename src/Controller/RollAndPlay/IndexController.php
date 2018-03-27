@@ -79,7 +79,9 @@ class IndexController extends Controller
         $fiche = $rpPerso->findAll();
 
         $rpResume = $this->getDoctrine()->getRepository(Resume::class);
-        $Resume = $rpResume->findAll();
+
+        $Resume = $rpResume->getResume();
+
         // nouveau msg
         $nvmessages = new Chat();
         $auteur = $this->getDoctrine()->getRepository(Users::class)->find(1);
@@ -96,6 +98,7 @@ class IndexController extends Controller
         // resume
 
         $resume = new Resume();
+        $resume->setDate(time());
         $formresume = $this->createForm(ResumeType::class , $resume);
         $formresume->handleRequest($request);
 

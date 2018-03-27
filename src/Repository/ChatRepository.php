@@ -35,6 +35,7 @@ class ChatRepository extends ServiceEntityRepository
     }
 
 
+
 //    /**
 //     * @return Chat[] Returns an array of Chat objects
 //     */

@@ -1,4 +1,3 @@
-
 $(function () {
     $('.connection').click(function () {
         $('.connectinterface').remove();
@@ -179,6 +178,7 @@ $( function() {
     $('.Resume').hide();
     $('.ongletchat').css('background','white');
     $('.Persocreer').hide();
+    $('.formresume').hide();
 });
 function ongletchat() {
     $('.Perso').hide();
@@ -216,8 +216,8 @@ function fermer2() {
     $('.Persocreer').fadeOut(400);
 }
 
-function diminuer(){
-
+function fermer3() {
+    $('.formresume').fadeOut(400);
 }
 
 $(function () {
@@ -244,8 +244,15 @@ $(function () {
 });
 
 
+$(function () {
 
+    $('.creeresume').click(function () {
+        $('.formresume').show();
+    });
+});
 
-
-
+function reload() {
+    $(document).delay(400);
+    $(document).reload()
+}
 

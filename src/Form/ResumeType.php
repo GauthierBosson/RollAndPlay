@@ -36,7 +36,8 @@ class ResumeType extends AbstractType
             ])
             ->add('envoi' ,SubmitType::class,[
                 'attr' => [
-                    'class' => 'send'
+                    'class' => 'btn btn-primary btn-block send',
+                    'onclick' =>'reload()'
                 ]
             ]);
     }
