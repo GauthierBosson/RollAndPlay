@@ -7,9 +7,12 @@
 </head>
 <body>
 {% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') == false %}
     <a href="/inscription">inscription</a>
     <a href="/connexion">connexion</a>
+    {% endif %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="/profil">profil</a>
         <a href="/deconnexion">deconnexion</a>
         <a href="/lobby">Mon lobby</a>
 
