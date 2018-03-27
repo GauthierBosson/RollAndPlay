@@ -11,11 +11,13 @@ namespace App\Controller\RollAndPlay;
 use App\Controller\Helper;
 use App\Entity\FichePersonnages;
 use App\Entity\Parties;
+use App\Entity\Resume;
 use App\Entity\Users;
 use App\Form\ChatType;
 use App\Entity\Actualites;
 use App\Entity\Chat;
 use App\Form\FichePersoType;
+use App\Form\ResumeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,10 +59,9 @@ class IndexController extends Controller
 
     /**
      * @Route("lobby/partie/{nom}_{id}.html", name="index_partie",
-     *     requirements={"id"="\d+"} )
+     *     requirements={"idarticle"="\d+"} )
      */
-    public function partie($nom, $id, Request $request , Request $request2) {
-
+    public function partie($id , Request $request , Request $request2) {
         $partie = $this->getDoctrine()
             ->getRepository(Parties::class)
             ->findBy(array( 'id' => $id ));
@@ -77,19 +78,26 @@ class IndexController extends Controller
 
         $fiche = $rpPerso->findAll();
 
+        $rpResume = $this->getDoctrine()->getRepository(Resume::class);
+        $Resume = $rpResume->findAll();
         // nouveau msg
         $nvmessages = new Chat();
         $auteur = $this->getDoctrine()->getRepository(Users::class)->find(1);
         $nvmessages->setPseudo('Theodac');
         $nvmessages->setDate(time());
-
-
-
         $form = $this->createForm(ChatType::class , $nvmessages);
+
+        // fiche perso
         $ficheperso = new FichePersonnages();
         $formperso = $this->createForm(FichePersoType::class , $ficheperso);
         $form->handleRequest($request);
         $formperso->handleRequest($request2);
+
+        // resume
+
+        $resume = new Resume();
+        $formresume = $this->createForm(ResumeType::class , $resume);
+        $formresume->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) :
 
@@ -107,12 +115,22 @@ class IndexController extends Controller
             $em->flush();
 
         endif;
+        if ($formresume->isSubmitted() && $formresume->isValid()) :
+
+            $resume = $formresume->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($resume);
+            $em->flush();
+
+        endif;
 
         return $this->render('Partie/partie.html.twig',[
             'form' => $form->createView(),
             'message' => $message ,
             'formperso' => $formperso->createView(),
-            'fiche' => $fiche
+            'fiche' => $fiche ,
+            'formresume' => $formresume->createView(),
+            'resume' => $Resume
 
         ]);
     }
