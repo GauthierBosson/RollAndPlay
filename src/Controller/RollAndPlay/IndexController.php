@@ -63,7 +63,7 @@ class IndexController extends Controller
 
         $partie = $this->getDoctrine()
             ->getRepository(Parties::class)
-            ->findBy(array( 'nom' => $nom, 'id' => $id ));
+            ->findBy(array( 'id' => $id ));
 
         if (!$partie) :
             return $this->redirectToRoute('index',[],Response::HTTP_MOVED_PERMANENTLY);
