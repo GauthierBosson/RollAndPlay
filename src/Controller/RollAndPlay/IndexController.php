@@ -67,7 +67,7 @@ class IndexController extends Controller
             ->findBy(array( 'id' => $id ));
 
         if (!$partie) :
-            return $this->redirectToRoute('index',[],Response::HTTP_MOVED_PERMANENTLY);
+            return $this->redirectToRoute('index_lobby',[],Response::HTTP_MOVED_PERMANENTLY);
         endif;
 
         // recuperer bdd
