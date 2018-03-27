@@ -113,7 +113,9 @@ $(function () {
     });
     $('.des').click(function () {
         $('#draggable').remove();
-        $('.plateau').append(`<div id="draggable" class="ui-widget-content"><span onclick="fermer()" class="croix"><i class="fa fa-times-circle"></i></span><br>
+        $('.plateau').append(`<div id="draggable" class="ui-widget-content"><div class="portlet"><div class="portlet-header desheader"><span onclick="fermer()" class="croix"><i class="fa fa-times-circle"></i></span></div>
+
+<div class="portlet-content">
 <form name="form1" action="">
         <input type="number" class="choicede" style="width: 35px;">
         <input type=button name=Bouton class="choicedee btn btn-primary btn-block" value="Lancer de dés perso" onclick="rolldice1()"  style="width: 150px;padding: 5px;" />
@@ -131,8 +133,10 @@ $(function () {
     <div class="animation3 col-sm4"><input name="de20" type="text" style="width: 100%;height: 100%;text-align: center;" /></div>
     <div class="animation4 col-sm4"><input name="de12" type="text" style="width: 100%;height: 100%;text-align: center;" /></div>
     <div class="animation5 col-sm4"><input name="de6" type="text" style="width: 100%;height: 100%;text-align: center;" /></div> 
-  </form>   
+  </form>
+  </div>   
   </div> 
+  </div>
 `);
         $('#draggable').hide().fadeIn(400)
         $('.animation1').hide();
@@ -146,6 +150,26 @@ $(function () {
             $( "#draggable" ).draggable();
         } );
 
+$( function() {
+    $( "#draggable" ).sortable({
+        connectWith: ".column",
+        handle: ".portlet-header",
+        cancel: ".portlet-toggle",
+        placeholder: "portlet-placeholder ui-corner-all"
+    });
+
+    $( ".portlet" )
+        .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
+        .find( ".portlet-header" )
+        .addClass( "ui-widget-header ui-corner-all" )
+        .prepend( "<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+
+    $( ".portlet-toggle" ).on( "click", function() {
+        var icon = $( this );
+        icon.toggleClass( "ui-icon-minusthick ui-icon-plusthick" );
+        icon.closest( ".portlet" ).find( ".portlet-content" ).toggle();
+    });
+} );
 
     });
     $('.Perso').hide();
@@ -189,6 +213,10 @@ function fermer2() {
     $('.Persocreer').fadeOut(400);
 }
 
+function diminuer(){
+
+}
+
 $(function () {
 
     $('.creerperso').click(function () {
@@ -211,6 +239,7 @@ $(function () {
 
 
 });
+
 
 
 
