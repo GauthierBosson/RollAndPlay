@@ -251,9 +251,12 @@ img {
     border: solid rgba(82, 82, 82, 0.61) 3px;
 }
 
-.Persocreer input,textarea{
-    width: 100%;
+.content1 input{
+    width: 40% !important;
+    text-align: center;
+    margin: auto;
 }
+
 
 .desheader{
     width: 100%;
@@ -292,5 +295,19 @@ img {
     color: #a30000;
 }
 .portlet-toggle:hover{
+    color: #a30000;
+}
+
+.croix2{
+    color: #000000;
+    font-weight: bold;
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.croix2:hover {
     color: #a30000;
 }

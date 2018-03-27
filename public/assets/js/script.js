@@ -3,7 +3,7 @@ $(function () {
     $('.connection').click(function () {
         $('.connectinterface').remove();
         $('.vide').append(`<div class="connectinterface">
-    <span class="croix" onclick="fermer2()"><i class="fa fa-times-circle"></i></span><br>
+    <span class="croix2" onclick="fermer2()"><i class="fa fa-times-circle"></i></span><br>
     <form id="contact-form" method="post" action="" class="contact-form form">
                   <div class="controls">
                     <div class="row">
@@ -117,17 +117,20 @@ $(function () {
 
 <div class="portlet-content">
 <form name="form1" action="">
-        <input type="number" class="choicede" style="width: 35px;">
-        <input type=button name=Bouton class="choicedee btn btn-primary btn-block" value="Lancer de dés perso" onclick="rolldice1()"  style="width: 150px;padding: 5px;" />
+<div class="content1">
         <br>
-        <input type=button name=Bouton class="100de btn btn-primary btn-block" value="Lancer de dés 100" onclick="rolldice2()" style="width: 150px;padding: 5px;"/>
+        <input type="number" class="choicede" >
+        <input type=button name=Bouton class="choicedee btn btn-primary btn-block" value="Lancer de dés perso" onclick="rolldice1()"/>
         <br>
-        <input type=button name=Bouton class="20de btn btn-primary btn-block" value="Lancer de dés 20" onclick="rolldice3()" style="width: 150px;padding: 5px;" />
+        <input type=button name=Bouton class="100de btn btn-primary btn-block" value="Lancer de dés 100" onclick="rolldice2()"/>
         <br>
-        <input type=button name=Bouton class="12de btn btn-primary btn-block" value="Lancer de dés 12" onclick="rolldice4()" style="width: 150px;padding: 5px;" />
+        <input type=button name=Bouton class="20de btn btn-primary btn-block" value="Lancer de dés 20" onclick="rolldice3()"/>
         <br>
-        <input type=button name=Bouton class="6de btn btn-primary btn-block" value="Lancer de dés 6" onclick="rolldice5()" style="width: 150px;padding: 5px;" />
- 
+        <input type=button name=Bouton class="12de btn btn-primary btn-block" value="Lancer de dés 12" onclick="rolldice4()"/>
+        <br>
+        <input type=button name=Bouton class="6de btn btn-primary btn-block" value="Lancer de dés 6" onclick="rolldice5()"/>
+        <br>
+</div>
     <div class="animation1 col-sm4"><input name="dechoice" type="text" style="width: 100%;height: 100%;text-align: center;" /></div>
     <div class="animation2 col-sm4"><input name="de100" type="text"  style="width: 100%;height: 100%;text-align: center;" /></div>
     <div class="animation3 col-sm4"><input name="de20" type="text" style="width: 100%;height: 100%;text-align: center;" /></div>
