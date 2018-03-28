@@ -25,7 +25,7 @@ class ActualitesType extends AbstractType
                 'required' => true,
                 'label' => 'Votre titre',
                 'attr' => [
-                    'class' => 'titre'
+                    'class' => 'titreActu'
                 ]
             ])
             ->add('chapo', TextType::class,[
@@ -51,7 +51,7 @@ class ActualitesType extends AbstractType
             ])
             ->add('envoi' , SubmitType::class, [
                 'attr' => [
-                    'class' => 'envoi'
+                    'class' => 'envoiActu'
                 ]
             ]);
     }

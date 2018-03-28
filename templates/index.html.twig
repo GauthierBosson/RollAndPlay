@@ -85,10 +85,11 @@
 
 
                     <div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover col-sm-3" style="width: 360px; overflow: hidden; border-radius: 1px;height: 500px;">
+                        <a href="actualite/{{ actu.titre | slugify }}_{{ actu.id }}.html">
                         <img src="images/{{ actu.featuredimage }}" alt="Man with backpack"
                              class="d-block w-full">
                         <img src="{{ actu.featuredimage }}" alt="">
-
+                        </a>
                         <div class="px-2 py-2">
 
 
