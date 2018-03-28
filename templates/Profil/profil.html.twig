@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Profil | Roll&Play{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -26,7 +26,7 @@
             <li><a href="/profil">{{ user.login }}</a></li>
             <li><a href="/deconnexion">deconnexion</a></li>
             <li><a href="/lobby">Mon lobby</a></li>
-            <li><a href="/actualite">Actualités</a></li>
+            <li><a href="/ajout-actualite">Actualités</a></li>
 
         </ul>
         {% endif %}

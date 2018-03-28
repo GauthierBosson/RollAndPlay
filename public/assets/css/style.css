@@ -94,15 +94,21 @@ header ul li a:hover {
 }
 .presentation-texte h3 {
     color: #ed6a15;
+    text-align: center;
 }
 .presentation-texte p{
 
 }
 footer {
+    background: #343434;
+    height: 50px;
+    text-align: center;
+
 
 }
 footer  p {
-
+    color: white;
+    margin-top: 20px;
 }
 
 
@@ -265,6 +271,14 @@ Creation partie
 }
 .onglets {
     overflow: hidden;
+}
+
+
+/*
+Actu
+ */
+.actualite {
+    height: 300px;
 }
 textarea {
     border-radius: 10px;

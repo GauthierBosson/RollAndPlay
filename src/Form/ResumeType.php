@@ -24,7 +24,7 @@ class ResumeType extends AbstractType
                 'required' => true,
                 'label' => 'Titre du résumé',
                 'attr' => [
-                    'class' => 'titre'
+                    'class' => 'titreResume'
                 ]
             ])
             ->add('contenu',TextareaType::class,[

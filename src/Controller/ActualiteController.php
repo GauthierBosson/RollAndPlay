@@ -13,18 +13,7 @@ class ActualiteController extends Controller
 {
     use Helper;
 
-    /**
-     * @Route("/actualite", name="index_actualite")
-     */
-    public function allactu() {
-        $actualite = $this->getDoctrine()
-            ->getRepository(Actualites::class)
-            ->findAll();
 
-        return $this->render('Actualite/actualitegeneral.html.twig', [
-            'actualite' => $actualite
-        ]);
-    }
 
     /**
      * @Route("/actualite/{titre}_{id}.html", name="actualite")
