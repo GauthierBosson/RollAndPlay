@@ -28,7 +28,7 @@ class PartieType extends AbstractType
 
             ->add('nom',TextType::class,[
                 'required' => true,
-                'label'    => 'Votre titre ',
+                'label'    => 'Titre de votre partie ',
                 'attr'     => [
                     'placeholder' => 'Votre titre'
                 ]
@@ -38,21 +38,21 @@ class PartieType extends AbstractType
                 'choice_label' => 'categorielibelle',
                 'expanded'  => false,
                 'multiple'  => false,
-                'label'     => false,
+                'label'     => 'Genre de votre partie',
                 'attr'          => [
                     'class'         =>  'form-control'
                 ]
             ])
             ->add('description' , TextareaType::class,[
                 'required' => true,
-                'label'    => 'Votre description :',
+                'label'    => 'Description de votre partie',
                 'attr'     => [
                     'placeholder' => 'Votre description'
                 ]
             ])
             ->add('featuredimage', FileType::class,[
                 'required' => true,
-                'label' => 'Votre image',
+                'label' => 'Image de votre partie',
                 'attr' => [
                     'class' => 'image'
                 ]
@@ -60,7 +60,7 @@ class PartieType extends AbstractType
             ->add('envoi',SubmitType::class, [
 
                 'attr'=> [
-                    'class' => 'envoi'
+                    'class' => 'envoiPartie'
                 ]
             ]);
     }

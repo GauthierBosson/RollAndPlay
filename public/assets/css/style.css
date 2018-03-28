@@ -212,6 +212,60 @@ Lobby
 .lobby h1 {
     display: inline;
 }
+/*
+
+Creation partie
+ */
+.creation h1 {
+    text-align: center;
+}
+.creation label{
+    display: block;
+}
+.creation form {
+    width: 425px;
+    text-align: center;
+    margin: auto;
+    border: 1px solid lightgray;
+    padding: 20px;
+    box-shadow: 0px 0px 4px black;
+}
+#partie div {
+    margin: 25px 10px;
+}
+.envoiPartie {
+    height: 50px;
+    width: 200px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+
+
+}
+
+.profil {
+    text-align: center;
+}
+.profil .info {
+    margin-top: 50px;
+}
+
+.headerPartie {
+    height: 40px;
+    line-height: 0;
+}
+.partieMain {
+    overflow: hidden;
+}
+.onglets {
+    overflow: hidden;
+}
 textarea {
     border-radius: 10px;
 
@@ -595,6 +649,16 @@ body, .text-light-black {
 
     border: none;
     border-bottom: 5px solid #2196fe;
+}
+.red-hover {
+    transition: all 0.25s ease-in;
+    border-bottom: 5px solid transparent;
+}
+.red-hover:hover {
+    transform: translateY(-5px);
+
+    border: none;
+    border-bottom: 5px solid #ed6a15;
 }
 
 

@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    {% endblock %}
 </head>
 <body>
 {% block body %}
+    <header class="col-xs-12">
+        <div>
+            <a href="/">
+                <img src="https://media.discordapp.net/attachments/425285814352609280/427771591800389634/Fichier_4.png" alt="logo"></a>
+        </div>
+        <ul>
+            <li><a href="/inscription">inscription</a></li>
+            <li> <a href="/connexion">connexion</a></li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+            <li><a href="/deconnexion">deconnexion</a></li>
+            <li><a href="/lobby">Mon lobby</a></li>
+        </ul>
+        {% endif %}
+
+
+
+    </header>
+    <main class="col-xs-12 creation">
+
     <h1>Créer partie</h1>
     {{ form(form) }}
-
+    </main>
+    <footer class="col-xs-12 footerinscription">
+        <p>Copyright - NFatorySchool - ce site a ete crée dans le cadre d'un exercice </p>
+    </footer>
 {% endblock %}
 {% block javascripts %}{% endblock %}
 </body>

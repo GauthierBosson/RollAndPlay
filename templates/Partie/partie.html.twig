@@ -20,6 +20,24 @@
 </head>
 <body>
 {% block body  %}
+    <header class="col-xs-12 headerPartie">
+
+        <ul>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="/inscription">inscription</a></li>
+                <li> <a href="/connexion">connexion</a></li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="/">Accueil</a></li>
+            <li><a href="/deconnexion">deconnexion</a></li>
+            <li><a href="/lobby">Mon lobby</a></li>
+        </ul>
+        {% endif %}
+
+
+
+    </header>
+    <main class="col-xs-12 partieMain">
     <div class="container-full">
         <main class="col-sm-9">
             <div class="col-xs-12 plateau" style="background: black; height: 100vh;padding: 0 !important;">
@@ -81,6 +99,7 @@
             </div>
         </div>
     </div>
+    </main>
 {% endblock %}
 {% block javascripts %}
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
