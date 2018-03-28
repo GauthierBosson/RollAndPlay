@@ -32,11 +32,13 @@ class IndexController extends Controller
      * @return Response
      */
     public function index() {
+        $user = $this->getUser();
         $repositories =  $this->getDoctrine()
             ->getRepository(Actualites::class);
 
         $actualites = $repositories->findAll();
         return $this->render('index.html.twig',[
+            'user' => $user,
             'actualites' => $actualites
         ]);
     }
@@ -53,6 +55,7 @@ class IndexController extends Controller
         $parties = $repository->findBy(array('user' => $user->getId()));
         $partie = new Parties();
         return $this->render('Partie/lobby_partie.html.twig', [
+            'user' => $user,
             'nom' => $this->slugify($partie->getNom()),
             'parties' => $parties
         ]);

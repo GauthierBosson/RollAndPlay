@@ -41,6 +41,7 @@ class SecurityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($inscription);
         $em->flush();
+        return $this->redirectToRoute('security_connexion');
         endif;
         return $this->render('Inscription/inscription.html.twig', [
             'form' => $form->createView()
