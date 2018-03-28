@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}"/>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    {% endblock %}
 </head>
 <body>
 {% block body %}
+    <header class="col-xs-12">
+        <div>
+            <img src="https://media.discordapp.net/attachments/425285814352609280/427771591800389634/Fichier_4.png" alt="logo">
+        </div>
+        <ul>
+            <li><a href="/inscription">inscription</a></li>
+            <li> <a href="/connexion">connexion</a></li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+
+            <li><a href="/deconnexion">deconnexion</a></li>
+            <li><a href="/lobby">Mon lobby</a></li>
+        </ul>
+        {% endif %}
+
+
+
+    </header>
+    <main class="col-xs-12 connect">
     <h1>Connexion</h1>
-    <form action="{{ path('security_connexion') }}" method="post">
+    <form action="{{ path('security_connexion') }}" method="post" id="connexion">
         <input name="_username"
                value="{{ last_email }}"
                class="form-control" required type="email"
@@ -17,7 +40,7 @@
                class="form-control" required type="password"
                placeholder="*******">
         <input type="hidden" name="_target_path" value="/" />
-        <button type="submit">login</button>
+        <button type="submit" class="connexion-envoi">login</button>
     </form>
     {% if error %}
         <div class="alert alert-danger">
@@ -25,6 +48,10 @@
             {{ error.messageKey|trans(error.messageData, 'security')| replace({"Invalid credentials." : "Identifiant et/ou mot de passe incorrect."}) }}
         </div>
     {% endif %}
+    </main>
+    <footer class="col-xs-12 footerinscription">
+        <p>Copyright - NFatorySchool - ce site a ete crée dans le cadre d'un exercice </p>
+    </footer>
 {% endblock %}
 {% block javascripts %}{% endblock %}
 </body>

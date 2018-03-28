@@ -29,6 +29,22 @@ class Parties
     private $categorie ;
 
     /**
+     * @return mixed
+     */
+    public function getFeaturedimage()
+    {
+        return $this->featuredimage;
+    }
+
+    /**
+     * @param mixed $featuredimage
+     */
+    public function setFeaturedimage($featuredimage): void
+    {
+        $this->featuredimage = $featuredimage;
+    }
+
+    /**
      * @ORM\Column(type="string")
      */
     private $description ;
@@ -43,6 +59,27 @@ class Parties
      * @ORM\OneToOne(targetEntity="App\Entity\Resume")
      */
     private $resume;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $featuredimage;
+
+    /**
+     * @return mixed
+     */
+    public function getResume()
+    {
+        return $this->resume;
+    }
+
+    /**
+     * @param mixed $resume
+     */
+    public function setResume($resume): void
+    {
+        $this->resume = $resume;
+    }
 
     /**
      * @return mixed

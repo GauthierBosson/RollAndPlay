@@ -13,6 +13,7 @@ use App\Entity\Categories;
 use App\Entity\Parties;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -47,6 +48,13 @@ class PartieType extends AbstractType
                 'label'    => 'Votre description :',
                 'attr'     => [
                     'placeholder' => 'Votre description'
+                ]
+            ])
+            ->add('featuredimage', FileType::class,[
+                'required' => true,
+                'label' => 'Votre image',
+                'attr' => [
+                    'class' => 'image'
                 ]
             ])
             ->add('envoi',SubmitType::class, [

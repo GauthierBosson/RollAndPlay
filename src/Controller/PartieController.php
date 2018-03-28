@@ -30,7 +30,16 @@ class PartieController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()):
+
+            $image = $partie->getFeaturedimage();
             $partie = $form->getData();
+            $filename   = $this->slugify($partie->getNom() ).'.'.$image->guessExtension();
+            $image->move(
+                $this->getParameter('articles_assets-dir'),
+                $filename
+            );
+            $partie->setFeaturedimage($filename);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($partie);
             $em->flush();
