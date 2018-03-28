@@ -37,6 +37,6 @@ security:
     access_control:
         - { path: ^/lobby, roles: ROLE_MJ }
         - { path: ^/profil, roles: ROLE_MJ }
-        - { path: ^/ajout-actualite, roles: ROLE_ MJ }
+        - { path: ^/ajout-actualite, roles: ROLE_MJ }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

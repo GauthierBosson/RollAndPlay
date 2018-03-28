@@ -69,6 +69,7 @@ class IndexController extends Controller
         $partie = $this->getDoctrine()
             ->getRepository(Parties::class)
             ->findBy(array( 'id' => $id ));
+        $user = $this->getUser();
 
         if (!$partie) :
             return $this->redirectToRoute('index_lobby',[],Response::HTTP_MOVED_PERMANENTLY);
@@ -133,6 +134,7 @@ class IndexController extends Controller
 
         return $this->render('Partie/partie.html.twig',[
             'form' => $form->createView(),
+            'user' => $user,
             'message' => $message ,
             'formperso' => $formperso->createView(),
             'fiche' => $fiche ,

@@ -29,8 +29,10 @@
             {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li><a href="/">Accueil</a></li>
+            <li><a href="/profil">{{ user.login }}</a></li>
             <li><a href="/deconnexion">deconnexion</a></li>
             <li><a href="/lobby">Mon lobby</a></li>
+            <li><a href="/ajout-actualite">Actualités</a></li>
         </ul>
         {% endif %}
 
