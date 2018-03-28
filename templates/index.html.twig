@@ -27,6 +27,7 @@
                 <li><a href="/profil">{{ user.login }}</a> </li>
                 <li><a href="/deconnexion">deconnexion</a></li>
                 <li><a href="/lobby">Mon lobby</a></li>
+                <li><a href="/actualite">Actualités</a></li>
             </ul>
             {% endif %}
 
@@ -102,7 +103,7 @@
 
                         </div>
 
-                        <a href="#0" class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
+                        <a href="actualite/{{ actu.titre | slugify }}_{{ actu.id }}.html" class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
                             Read More
                         </a>
 

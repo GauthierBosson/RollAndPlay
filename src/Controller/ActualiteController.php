@@ -5,18 +5,42 @@ namespace App\Controller;
 use App\Entity\Actualites;
 use App\Form\ActualitesType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ActualiteController extends Controller
 {
     use Helper;
+
     /**
-     * @Route("/actualite", name="actualite")
+     * @Route("/actualite", name="index_actualite")
      */
-    public function index()
+    public function allactu() {
+        $actualite = $this->getDoctrine()
+            ->getRepository(Actualites::class)
+            ->findAll();
+
+        return $this->render('Actualite/actualitegeneral.html.twig', [
+            'actualite' => $actualite
+        ]);
+    }
+
+    /**
+     * @Route("/actualite/{titre}_{id}.html", name="actualite")
+     */
+    public function index($id, Request $request)
     {
-        return $this->render('actualite/index.html.twig', [
+        $actualite = $this->getDoctrine()
+            ->getRepository(Actualites::class)
+            ->findOneBy(array( 'id' => $id ));
+
+        if (!$actualite) :
+            return $this->redirectToRoute('index',[],Response::HTTP_MOVED_PERMANENTLY);
+        endif;
+
+        return $this->render('Actualite/actualitedetails.html.twig', [
+            'actualite' => $actualite,
             'controller_name' => 'ActualiteController',
         ]);
     }
@@ -52,10 +76,16 @@ class ActualiteController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($actu);
             $em->flush();
+
+            return $this->redirectToRoute('actualite', [
+                'actu' =>  $actualite,
+                'id' => $actu->getId(),
+                'titre' => $this->slugify($actu->getTitre())
+            ]);
+
         }
         return $this->render('Actualite/ajout_actualite.html.twig',[
             'form' => $form->createView(),
-            'actu' =>  $actualite
         ]);
     }
 }

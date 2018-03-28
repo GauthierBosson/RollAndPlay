@@ -17,13 +17,17 @@
                 <img src="https://media.discordapp.net/attachments/425285814352609280/427771591800389634/Fichier_4.png" alt="logo"></a>
         </div>
         <ul>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <li><a href="/inscription">inscription</a></li>
             <li> <a href="/connexion">connexion</a></li>
+            {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-
+            <li><a href="/profil">{{ user.login }}</a></li>
             <li><a href="/deconnexion">deconnexion</a></li>
             <li><a href="/lobby">Mon lobby</a></li>
+            <li><a href="/actualite">Actualités</a></li>
+
         </ul>
         {% endif %}
 
