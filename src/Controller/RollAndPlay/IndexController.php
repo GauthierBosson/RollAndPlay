@@ -17,6 +17,7 @@ use App\Form\ChatType;
 use App\Entity\Actualites;
 use App\Entity\Chat;
 use App\Form\FichePersoType;
+use App\Form\ProfilType;
 use App\Form\ResumeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -144,6 +145,7 @@ class IndexController extends Controller
      */
     public function profil() {
         $user = $this->getUser();
+        $form = $this->createForm(ProfilType::class);
         return $this->render('Profil/profil.html.twig', [
             'user' => $user
         ]);
