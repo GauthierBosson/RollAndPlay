@@ -345,7 +345,6 @@ img {
 }
 #draggable {
     width: 400px;
-    height: 400px;
     background-color: #1f1f1f;
     color: #675a4c;
     position: absolute;
@@ -900,4 +899,42 @@ body, .text-light-black {
 }
 .pb-3 {
     padding-bottom: 3rem;
+}
+.portlet-toggle {
+    color: #000000;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    margin-top: -9px;
+    cursor: pointer;
+}
+
+
+.portlet {
+    background-color: #1F1F1F;
+}
+
+.croix{
+    color: #000000;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    right: 1%;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.croix:hover {
+    color: #a30000;
+}
+.portlet-toggle:hover{
+    color: #a30000;
+}
+.desheader{
+    width: 100%;
+    height: 20px;
+    background-color: #2d2d2d;
+    border-radius: 5px;
+    position: relative;
 }
