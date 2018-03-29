@@ -112,7 +112,7 @@ $(function () {
     });
     $('.des').click(function () {
         $('#draggable').remove();
-        $('.plateau').append(`<div id="draggable" class="ui-widget-content"><div class="portlet"><div class="portlet-header desheader"><span onclick="fermer()" class="croix"><i class="fa fa-times-circle"></i></span></div>
+        $('.plateau').append(`<div id="draggable" class="ui-widget-content"><div class="portlet-header desheader"><span onclick="fermer()" class="croix"><i class="fa fa-times-circle"></i></span></div>
 
 <div class="portlet-content">
 <form name="form1" action="">
@@ -137,7 +137,6 @@ $(function () {
     <div class="animation5 col-sm4"><input name="de6" type="text" style="width: 100%;height: 100%;text-align: center;" /></div> 
   </form>
   </div>   
-  </div> 
   </div>
 `);
         $('#draggable').hide().fadeIn(400)
@@ -235,9 +234,7 @@ $(function () {
         })
     }
 
-    $( function() {
-        $( ".Persocreer" ).draggable();
-    } );
+
 
 
 

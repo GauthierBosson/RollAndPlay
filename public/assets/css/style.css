@@ -362,7 +362,7 @@ img {
 #draggable form{
     margin: auto;
     padding: auto;
-    width: 400px;
+    width: 300px;
 }
 
 .animation1 {
@@ -561,6 +561,18 @@ img {
     color: #a30000;
 }
 
+.croix2{
+    color: #000000;
+    font-weight: bold;
+    float: right;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.croix2:hover {
+    color: #a30000;
+}
+
 .Persocreer{
     width: 350px;
     height: 500px;
@@ -589,7 +601,6 @@ body {
     line-height: 1.5;
     text-rendering: optimizeLegibility;
     font-variant-ligatures: none;
-    box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     background-color: #fafafa;
 }
