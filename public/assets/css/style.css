@@ -129,6 +129,10 @@ Inscription
     text-align: center;
 
 }
+.formulaire em {
+    display: block;
+    text-align: center;
+}
 .formulaire label {
     display: block;
 }
