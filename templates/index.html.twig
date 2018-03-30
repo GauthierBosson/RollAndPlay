@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Roll&Play{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+
+    <main class="col-xs-12">
+        <header class="col-xs-12">
+            <div>
+                <a href="/">
+                <img src="https://media.discordapp.net/attachments/425285814352609280/427771591800389634/Fichier_4.png" alt="logo"></a>
+            </div>
+            <ul>
+                {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="/inscription">inscription</a></li>
+                <li> <a href="/connexion">connexion</a></li>
+                {% endif %}
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                <li><a href="/profil">{{ user.login }}</a> </li>
+                <li><a href="/deconnexion">deconnexion</a></li>
+                <li><a href="/lobby">Mon lobby</a></li>
+                <li><a href="/ajout-actualite">Actualités</a></li>
+            </ul>
+            {% endif %}
+
+
+
+        </header>
+        <section class="col-xs-12 titre">
+            <div class="col-xs-12">
+                <h2>Roll and Play</h2>
+                <h3>Tout le plaisir des jeux sur table enfin en ligne ! </h3>
+            </div>
+        </section>
+        <section class="col-xs-12 presentation">
+            <div class="col-sm-6 presentation-img">
+                <div>
+                <img src="{{ asset('assets/img/aventurier.jpg') }}" alt="recrutez des aventuriez"/>
+                </div>
+            </div>
+            <div class="col-sm-6 presentation-texte">
+                <div>
+                <h3>Inscris-toi ! </h3>
+                <p>Bienvenue sur Roll And Play ! Nouveau joueur, habitué des jeux de rôles ou nostalgique ? Tout le monde est le bienvenue. Roll And Play est un site vous permettant de retrouver les sensations du jeu de rôle papier, sur le web. Inscrivez-vous, créez et gérez vos parties ! Roll And Play vous permet aussi d'accéder aux dernières actualités en rapport avec le jeu de rôle, comme l'ajout d'une catégorie sur notre site par exemple. </p>
+                </div>
+            </div>
+        </section>
+        <section class="col-xs-12 presentation">
+            <div class="col-sm-6 presentation-texte">
+                <div>
+                    <h3>Rejoins tes amis ! </h3>
+                    <p>Jouer à un jeu de rôle seul, ce n'est pas vraiment amusant (c'est impossible, en fait). Roll And Play permet à vos amis de rejoindre vos parties. Le site vous permet aussi de communiquer entre vous grâce à un chat, de créer des fiches personnages et leur attribuer des compétences, des noms, des caractéristiques. Il permet aussi de créer des résumés afin de pourvoir reprendre votre partie à tout moment ! </p>
+                </div>
+            </div>
+            <div class="col-sm-6 presentation-img">
+                <img src="{{ asset('assets/img/fanta.jpg') }}" alt="choisissez un unvivers">
+            </div>
+        </section>
+        <section class="col-xs-12 presentation">
+            <div class="col-sm-6 presentation-img">
+                <div>
+                <img src="{{ asset('images/partez.png') }}" alt="partez a l'aventure" />
+                    </div>
+            </div>
+            <div class="col-sm-6 presentation-texte">
+                <div>
+                    <h3>Jouez tous ensemble ! </h3>
+
+                    <p>Une fois votre groupe d'amis prêt, créez votre partie, choisissez votre univers parmis ceux qui nous proposons et plongez-vous dans l'aventure. Affrontez des monstres, bravez les plus grands obstacles, explorez des donjons et coopérez avec vos amis pour vous sortir de situations extrêmes et terminez votre aventure en héros ! L'aventure n'attend que vous ! </p>
+                </div>
+            </div>
+
+        </section>
+        <section class="col-xs-12">
+            <div class="container">
+                {% for actu in actualites  %}
+
+
+                    <div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover col-sm-3" style="width: 360px; overflow: hidden; border-radius: 1px;height: 500px;">
+                        <a href="actualite/{{ actu.titre | slugify }}_{{ actu.id }}.html">
+                        <img src="images/{{ actu.featuredimage }}" alt="Man with backpack"
+                             class="d-block w-full">
+                        <img src="{{ actu.featuredimage }}" alt="">
+                        </a>
+                        <div class="px-2 py-2">
+
+
+                            <h1 class="ff-serif font-weight-normal text-black card-heading mt-0 mb-1" style="line-height: 1.25;">
+                                {{ actu.titre }}
+                            </h1>
+
+                            <p class="mb-1">
+                                {{ actu.contenu | accroche }}
+                            </p>
+
+                        </div>
+
+                        <a href="actualite/{{ actu.titre | slugify }}_{{ actu.id }}.html" class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
+                            Read More
+                        </a>
+
+
+
+                    </div>
+
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+        <footer class="col-xs-12">
+            <p>Copyright - NFatorySchool - ce site a ete crée dans le cadre d'un exercice </p>
+        </footer>
+    </main>
+{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>

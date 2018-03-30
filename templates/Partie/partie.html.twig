@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Partie | Roll&Play{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <script
+                src="https://code.jquery.com/jquery-3.3.1.min.js"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('assets/js/script.js') }}"></script>
+    {% endblock %}
+</head>
+<body>
+{% block body  %}
+    <header class="col-xs-12 headerPartie">
+
+        <ul>
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="/inscription">inscription</a></li>
+                <li> <a href="/connexion">connexion</a></li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li><a href="/">Accueil</a></li>
+            <li><a href="/profil">{{ user.login }}</a></li>
+            <li><a href="/deconnexion">deconnexion</a></li>
+            <li><a href="/lobby">Mon lobby</a></li>
+            <li><a href="/ajout-actualite">Actualités</a></li>
+        </ul>
+        {% endif %}
+
+
+
+    </header>
+    <main class="col-xs-12 partieMain">
+    <div class="container-full">
+        <main class="col-sm-9">
+            <div class="col-xs-12 plateau" style="background: black; height: 100vh;padding: 0 !important;">
+                <div class="logo">
+                    <img src="{{ asset('./assets/img/logo.png') }}" alt="logo">
+                </div>
+                <div class="des">
+                    <input type="button" class="button"/>
+                </div>
+            </div>
+
+        </main>
+        <div class="onglets col-sm-3" style="height: 100vh;">
+            <div id="tabs">
+                <ul>
+                    <li onclick="ongletchat()" class="ongletchat">Tchat</li>
+                    <li onclick="ongletperso()" class="ongletpageperso">Fiches perso</li>
+                    <li onclick="ongletresume()" class="ongletpageresume">Résumé</li>
+                </ul>
+            </div>
+            <div class="tchat" style="margin-top: 30px">
+                <script id="cid0020000183154357079" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 100%;height: 913vh;">{"handle":"rolllandplay","arch":"js","styles":{"b":100,"c":"000000","d":"000000","l":"FFFFFF","m":"FFFFFF","p":"10","r":100,"fwtickm":1}}</script></div>
+            <div class="Resume">
+                <div id="Resume">
+                    <input type=button name=Bouton class="creeresume btn btn-primary btn-block"  value="Ajouter dans le résumé"/>
+                    <div class="formresume">
+                        <span onclick="fermer3()" class="croix2"><i class="fa fa-times-circle"></i></span><br>
+                        {{ form(formresume) }}
+                    </div>
+                    <div>
+                        {% for resumes in resume  %}
+                            <h2>{{ resumes.titre }}</h2><br>
+                            {{ resumes.contenu }}
+                            <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="Perso">
+                <input type=button name=Bouton class="creerperso btn btn-primary btn-block"  value="creer un personnage"/>
+                <div class="Persocreer">
+                    <span onclick="fermer2()" class="croix2"><i class="fa fa-times-circle"></i></span><br>
+                    <div id="Perso">
+
+                        {{ form(formperso) }}
+
+
+
+                    </div>
+                </div>
+                    <div id="Persoafficher" >
+                        {% for fichep in fiche %}
+                            <div class="Persoafficher" style="background: url({{ fichep.image }});height: 150px;background-size: cover;text-align: center;">
+                                <strong style="color: black;font-size: 22px;">{{ fichep.nom }}</strong>
+                            </div>
+                            <hr style="color: black;border: 4px!important;">
+                        {% endfor %}
+                    </div>
+            </div>
+        </div>
+    </div>
+    </main>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+</body>
+</html>
